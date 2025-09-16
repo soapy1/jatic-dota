@@ -24,3 +24,4 @@ python -m build --wheel
 2. Install the environment `pixi install`
 
 3. Run the script `pixi run exc`
+  - To run specifically for cpu or gpu try `pixi run -e cpu exc`

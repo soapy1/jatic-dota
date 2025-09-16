@@ -49,14 +49,14 @@ jatic_dota = ["resources/*"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge"]
-platforms = ["linux-64", "osx-arm64"]
+platforms = ["linux-64"]
 
 [tool.pixi.pypi-dependencies]
 jatic_dota = { path = ".", editable = true }
 
 [tool.pixi.dependencies]
 python = ">=3.10,<3.14"
-torchvision = "==0.19.1"
+torchvision = ">=0.19.1"
 shapely = ">2.0,<2.1"
 pillow = "==11.1.0"
 numpy = "==2.2.4"
@@ -66,6 +66,13 @@ tqdm = "==4.67.1"
 opencv = "*"
 fvcore = "==0.1.5.post20221221"
 tensorboard = "*"
+
+[tool.pixi.feature.gpu.system-requirements]
+cuda = "12.0"
+
+[tool.pixi.feature.gpu.dependencies]
+cuda-version = "12.*"
+pytorch-gpu = "==2.5.1"
 
 [tool.pixi.feature.cpu.dependencies]
 pytorch-cpu = "==2.4.1"
@@ -77,4 +84,5 @@ python = "3.10.*"
 exc = "python script.py"
 
 [tool.pixi.environments]
-dev = ["dev", "py310", "cpu"]
+cpu = ["dev", "py310", "cpu"]
+gpu = ["dev", "py310", "gpu"]
