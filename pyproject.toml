@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
+build-backend = "hatchling.build"
+requires = ["hatchling"]
 
 [project]
 name = "jatic_dota"
@@ -46,3 +46,35 @@ jatic_dota = ["resources/*"]
   "layers/csrc/**/*.cu",
   "../LICENSE",
 ]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+jatic_dota = { path = ".", editable = true }
+
+[tool.pixi.dependencies]
+python = ">=3.10,<3.14"
+torchvision = "==0.19.1"
+shapely = ">2.0,<2.1"
+pillow = "==11.1.0"
+numpy = "==2.2.4"
+httpx = "==0.28.1"
+matplotlib = "==3.10.1"
+tqdm = "==4.67.1"
+opencv = "*"
+fvcore = "==0.1.5.post20221221"
+tensorboard = "*"
+
+[tool.pixi.feature.cpu.dependencies]
+pytorch-cpu = "==2.4.1"
+
+[tool.pixi.feature.py310.dependencies]
+python = "3.10.*"
+
+[tool.pixi.feature.dev.tasks]
+exc = "python script.py"
+
+[tool.pixi.environments]
+dev = ["dev", "py310", "cpu"]

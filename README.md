@@ -16,3 +16,11 @@ source .venv/bin/activate
 python -m pip install build wheel setuptools torch==2.4.1 torchvision==0.19.1 # detectron2 is funky
 python -m build --wheel
 ```
+
+## Using pixi
+
+1. Install `pixi`: https://pixi.sh/latest/#installation
+
+2. Install the environment `pixi install`
+
+3. Run the script `pixi run exc`
